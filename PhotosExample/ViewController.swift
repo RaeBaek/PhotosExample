@@ -10,7 +10,10 @@ import Photos
 
 class ViewController: UIViewController {
 
+    //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Properties
     var fetchResult: PHFetchResult<PHAsset>!
     let imageManager: PHCachingImageManager = PHCachingImageManager()
     let cellIdentifier: String = "cell"
@@ -83,6 +86,11 @@ class ViewController: UIViewController {
             return
         }
         nextViewController.asset = self.fetchResult[index.row]
+    }
+    
+    //MARK: @IBActions
+    @IBAction func touchUpRefreshButton(_ sender: UIBarButtonItem) {
+        self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
     }
 }
 
